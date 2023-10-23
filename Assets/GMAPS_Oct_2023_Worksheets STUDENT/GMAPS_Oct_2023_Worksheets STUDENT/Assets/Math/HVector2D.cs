@@ -29,7 +29,8 @@ public class HVector2D
         y = 0;
         h = 1.0f;
     }
-
+    // Static functions means the function belings to the class itself so that these
+    // functions can be called anywhere without an instance
      public static HVector2D operator +(HVector2D a, HVector2D b)
      {
         return new HVector2D(a.x + b.x, a.y + b.y);
@@ -62,20 +63,20 @@ public class HVector2D
         y /= magnitude;
     }
 
-    // public float DotProduct(/*???*/)
-    // {
-
-    // }
+     public float DotProduct(Hvector2D vec)
+     {
+        return (x * vec.x + y * vec.y)
+     }
 
     // public HVector2D Projection(/*???*/)
     // {
 
     // }
 
-    // public float FindAngle(/*???*/)
-    // {
+     public float FindAngle(/*???*/)
+     {
 
-    // }
+     }
 
     public Vector2 ToUnityVector2()
     {
