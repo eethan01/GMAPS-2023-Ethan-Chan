@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Transform captain;
     public bool IsCaptain = true;
     public Player OtherPlayer;
 
@@ -68,10 +69,32 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
         if (IsCaptain)
         {
-            //float angle = // Your code here
-            //Debug.Log(angle);
+            //Draw an arrow from the position of the captain to the player1
+            DebugExtension.DebugArrow(captain.position, transform.position, Color.black, 60f);
+            //We get the coordinates of where the captain is
+            Vector3 position = captain.position;
+            //Find the rotation of the captain of where he is facing.
+            Quaternion rotation = captain.rotation;
+            //Now we find the vector for the captain in the forward direction of him.
+            Vector3 forwardCaptain = rotation * Vector3.forward;
+            Vector3 playerDistance = transform.position - captain.position;
+
+            //Draw the arrow of the vector
+            DebugExtension.DebugArrow(captain.position, forwardCaptain, Color.blue);
+            // Now we use the formula to get the dot product of the 2 vectors.
+            float dotProduct = Vector3.Dot(forwardCaptain, playerDistance);
+            Debug.Log(dotProduct);
+            //We are calculating the magnitude of the product of the captain and player by using unity's .magnitude property
+            float magnitudeProduct = forwardCaptain.magnitude * playerDistance.magnitude;
+            //We caluclate the angle based on the formula
+            float angleInRad = Mathf.Acos(dotProduct / magnitudeProduct);
+            //Convert the value of angleInRad from radians to degrees using MathF.Rad2Deg
+            float angle = Mathf.Rad2Deg * angleInRad;
+            Debug.Log(angle);
         }
+
     }
 }
