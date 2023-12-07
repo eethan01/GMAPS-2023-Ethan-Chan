@@ -12,7 +12,7 @@ public class HMatrix2D
     {
         SetIdentity();
     }
-
+    //This is a constuctor that takes a 3x3 sized array. we create a for loop for 3 horizontal and 3 vertical
     public HMatrix2D(float[,] multiArray)
     {
         for (int y = 0; y < 3; y++)
@@ -23,7 +23,7 @@ public class HMatrix2D
             }
         }
     }
-
+    //We are taking each individual element from the matrix
     public HMatrix2D(float m00, float m01, float m02,
              float m10, float m11, float m12,
              float m20, float m21, float m22)
@@ -43,7 +43,7 @@ public class HMatrix2D
         Entries[2, 1] = m21;
         Entries[2, 2] = m22;
     }
-
+    //Addition operator of matrix
     public static HMatrix2D operator +(HMatrix2D left, HMatrix2D right)
     {
         return new HMatrix2D(
@@ -52,7 +52,7 @@ public class HMatrix2D
             left.Entries[2, 0] + right.Entries[2, 0], left.Entries[2, 1] + right.Entries[2, 1], left.Entries[2, 2] + right.Entries[2, 2]
         );
     }
-
+    //Subtraction operator of matrix
     public static HMatrix2D operator -(HMatrix2D left, HMatrix2D right)
     {
         return new HMatrix2D(
@@ -61,7 +61,7 @@ public class HMatrix2D
             left.Entries[2, 0] - right.Entries[2, 0], left.Entries[2, 1] - right.Entries[2, 1], left.Entries[2, 2] - right.Entries[2, 2]
         );
     }
-
+    //Scalar multiplication of matrix where i created a for loop to multiply each element to the scalar value
     public static HMatrix2D operator *(HMatrix2D left, float scalar)
     {
         HMatrix2D result = new HMatrix2D();
@@ -78,7 +78,7 @@ public class HMatrix2D
     }
 
     // Note that the second argument is a HVector2D object
-    //
+    //Multiplication operator but with a HVector where i code each multiplication
     public static HVector2D operator *(HMatrix2D left, HVector2D right)
     {
         return new HVector2D(
@@ -89,7 +89,7 @@ public class HMatrix2D
     }
 
     // Note that the second argument is a HMatrix2D object
-    //
+    //multiplication of 2 matrices operator
     public static HMatrix2D operator *(HMatrix2D left, HMatrix2D right)
     {
         return new HMatrix2D
@@ -154,7 +154,7 @@ public class HMatrix2D
             left.Entries[2, 0] * right.Entries[0, 2] + left.Entries[2, 1] * right.Entries[1, 2] + left.Entries[2, 2] * right.Entries[2, 2]
     );
     }
-
+    //Checking if the two matrices are equivalent.
     public static bool operator ==(HMatrix2D left, HMatrix2D right)
     {
         for (int row = 0; row < 3; row++)
@@ -169,7 +169,7 @@ public class HMatrix2D
         }
         return true;
     }
-
+    //Checking if the two matrices are not equivalent.
     public static bool operator !=(HMatrix2D left, HMatrix2D right)
     {
         for (int row = 0; row < 3; row++)
@@ -196,6 +196,7 @@ public class HMatrix2D
     //    return // your code here
     //}
 
+    // Set the matrix to the identity matrix
     public void SetIdentity()
     {
         for (int y = 0; y < 3; y++)
@@ -219,14 +220,14 @@ public class HMatrix2D
         //            }
         //        }
     }
-
+    //Set the matrix to a translation matrix
     public void SetTranslationMat(float transX, float transY)
     {
         //SetIdentity;
         Entries[0,2] = transX;
         Entries[1,2] = transY;
     }
-
+    //Set the matrix to a rotation matrix
     public void SetRotationMat(float rotDeg)
     {
         SetIdentity();
@@ -242,7 +243,7 @@ public class HMatrix2D
     //{
     //    // your code here
     //}
-
+    //Here we can print the matrix entries
     public void Print()
     {
         string result = "";

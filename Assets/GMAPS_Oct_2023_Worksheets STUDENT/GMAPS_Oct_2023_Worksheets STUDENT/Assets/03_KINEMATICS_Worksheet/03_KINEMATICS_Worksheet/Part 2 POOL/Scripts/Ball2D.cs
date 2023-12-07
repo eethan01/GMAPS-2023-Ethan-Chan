@@ -24,7 +24,9 @@ public class Ball2D : MonoBehaviour
 
     public bool IsCollidingWith(float x, float y)
     {
+        // Calculate the distance between the ball's position and the given point
         float distance = Util.FindDistance(Position, new HVector2D(x, y));
+        // Check if the distance is less than or equal to the radius
         return distance <= Radius;
     }
 
@@ -36,6 +38,7 @@ public class Ball2D : MonoBehaviour
 
     public void FixedUpdate()
     {
+        // Update the physics of the ball based on time
         UpdateBall2DPhysics(Time.deltaTime);
         //HVector2D a = new HVector2D(8f, 5f);
         //HVector2D b = new HVector2D(8f, 3f);
@@ -45,12 +48,13 @@ public class Ball2D : MonoBehaviour
 
     private void UpdateBall2DPhysics(float deltaTime)
     {
+        // Calculate the displacement in the x and y directions
         float displacementX = Velocity.x * deltaTime;
         float displacementY = Velocity.y * deltaTime;
-
+        // Update the position of the ball
         Position.x += displacementX;
         Position.y += displacementY;
-
+        // Update the GameObject's position based on the calculated position above
         transform.position = new Vector2(Position.x, Position.y);
     }
 }

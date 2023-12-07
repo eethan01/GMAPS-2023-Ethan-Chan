@@ -169,7 +169,6 @@ public class VectorExercises : MonoBehaviour
         HVector2D v1 = b - a;
         // Your code here
 
-        //HVector2D //Your code here
 
         DebugExtension.DebugArrow(a.ToUnityVector3(), b.ToUnityVector3(), Color.red, 60f);
         DebugExtension.DebugArrow(a.ToUnityVector3(), c.ToUnityVector3(), Color.yellow, 60f);

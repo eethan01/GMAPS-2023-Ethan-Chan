@@ -19,7 +19,7 @@ public class Mario : MonoBehaviour
 
     void FixedUpdate    ()
     {
-        //First we calc the distance bwtween the player and the planet.
+        //First we calc the distance between the player and the planet.
         gravityDir = planet.position - transform.position;
         //Then we find the perpendicular vector to gravitydir and normalize it.
         moveDir = new Vector3(gravityDir.y, -gravityDir.x, 0f);
