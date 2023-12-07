@@ -19,20 +19,28 @@ public class Mario : MonoBehaviour
 
     void FixedUpdate    ()
     {
+        //First we calc the distance bwtween the player and the planet.
         gravityDir = planet.position - transform.position;
+        //Then we find the perpendicular vector to gravitydir and normalize it.
         moveDir = new Vector3(gravityDir.y, -gravityDir.x, 0f);
         moveDir = moveDir.normalized * -1f;
 
+        //Apply the movement force onto the astronaut gameobject.
         rb.AddForce(moveDir * force);
 
+        // Apply the gravitational force onto the astronaut.
         gravityNorm = gravityDir.normalized;
         rb.AddForce(gravityNorm * gravityStrength);
 
+        //Then we find the agle between planet.up and the negative of gravitynorm to rotate the astronaut accordingly
         float angle = Vector3.SignedAngle(planet.up, -gravityNorm, Vector3.forward);
 
+        //apply the angle change onto the astronaut
         rb.MoveRotation(Quaternion.Euler(0,0,angle));
         //Debug.Log(moveDir);
+        //Arrow for the gravity
         DebugExtension.DebugArrow(transform.position, gravityDir,  Color.red);
+        //Arrow for the movedir
         DebugExtension.DebugArrow(transform.position, moveDir, Color.blue);
     }
 

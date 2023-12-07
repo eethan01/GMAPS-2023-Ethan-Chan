@@ -58,7 +58,9 @@ public class VectorExercises : MonoBehaviour
 
     void Question2b(int n)
     {
+        //Create a for loop that loops around the value of n
         for (int i = 0; i < n; i++){
+            // Creates new random vector start and end points based of the game dimensions maxx and maxy
             startPt = new Vector2(
                 Random.Range(-maxX, maxX), 
                 Random.Range(-maxY, maxY));
@@ -67,7 +69,7 @@ public class VectorExercises : MonoBehaviour
                 Random.Range(-maxX, maxX), 
                 Random.Range(-maxY, maxY));
 
-
+            //Draw out each value as lines.
             drawnLine = lineFactory.GetLine(
                 startPt, endPt, 0.02f, Color.black);
             drawnLine.EnableDrawing(true);
@@ -85,24 +87,19 @@ public class VectorExercises : MonoBehaviour
 
     void Question2e(int n)
     {
+        //For loop created for each number within n
         for (int i = 0; i < n; i++)
         {
-            startPt = new Vector2(
-                Random.Range(-maxX, maxX), 
-                Random.Range(-maxY, maxY));
+            //Creates random end points for each arrow based upon max values of maxx and maxy
             endPt = new Vector2(
                 Random.Range(-maxX, maxX),
                 Random.Range(-maxY, maxY));
-            drawnLine = lineFactory.GetLine(
-                startPt, endPt, 0.02f, Color.black);
-            drawnLine.EnableDrawing(true);
 
-            // Your code here
-            // ...
 
+            //Draw out each arrow starting from origin
             DebugExtension.DebugArrow(
                 new Vector3(0, 0, 0),
-                new Vector3(Random.Range(-maxX, maxX), Random.Range(-maxY, maxY), Random.Range(-maxY, maxY)),
+                new Vector3(endPt.x, endPt.y, endPt.y),
                 // Your code here,
                 Color.white,
                 60f);
@@ -113,7 +110,9 @@ public class VectorExercises : MonoBehaviour
     {
         HVector2D a = new HVector2D(3, 5);
         HVector2D b = new HVector2D(-4, 2);
-        HVector2D c = a + b; 
+        //C is created by the sum of the two vectors a and b
+        HVector2D c = a + b;    
+        //Draw out all of the arrows
         DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
         DebugExtension.DebugArrow(Vector3.zero, b.ToUnityVector3(), Color.green, 60f);
         DebugExtension.DebugArrow(Vector3.zero, c.ToUnityVector3(), Color.white, 60f);
@@ -132,12 +131,14 @@ public class VectorExercises : MonoBehaviour
 
     public void Question3b()
     {
-        // Your code here
-        // ...
+        
         HVector2D a = new HVector2D(3, 5);
+        //Created b based of a scaled by 2 times and half of a
         HVector2D b = a * 2;
         //HVector2D b = a / 2;
+        //Created an offset for arrow b
         float offset = 1.0f;
+        //Drew the 2 arrows
         DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
         // Your code here
         DebugExtension.DebugArrow(new Vector3(offset, 0, 0), b.ToUnityVector3(), Color.green, 60f);
@@ -145,13 +146,17 @@ public class VectorExercises : MonoBehaviour
 
     public void Question3c()
     {
+
         HVector2D a = new HVector2D(3, 5);
-        HVector2D aa = new HVector2D(3, 5);
-        aa.Normalize();
+        HVector2D aNormalize = new HVector2D(3, 5);
+        //I created the normalized version of a
+        aNormalize.Normalize();
+        //Created an offset to properly display the vectors
         float offset = 1.0f;
+        //Display the two arrows
         DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
-        DebugExtension.DebugArrow(new Vector3(offset, 0, 0), aa.ToUnityVector3(), Color.green, 60f);
-        Debug.Log("Magnitude of a normalized = " + aa.Magnitude().ToString("F2"));
+        DebugExtension.DebugArrow(new Vector3(offset, 0, 0), aNormalize.ToUnityVector3(), Color.green, 60f);
+        Debug.Log("Magnitude of a normalized = " + aNormalize.Magnitude().ToString("F2"));
 
     }
 
